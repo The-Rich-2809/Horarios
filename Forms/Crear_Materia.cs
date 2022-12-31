@@ -108,7 +108,7 @@ namespace Proyecto_Final.Forms
                 Materias_SQL materias_SQL = new Materias_SQL();
                 int RenglonSeleccionado = Dgv_Materias.CurrentRow.Index;
                 int Id = Convert.ToInt32(Dgv_Materias.Rows[RenglonSeleccionado].Cells[0].Value.ToString());
-                DialogResult Resultado = MessageBox.Show("¿Desea eliminar la materia con Id " + Id + "?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult Resultado = MessageBox.Show("¿Deseas eliminar la materia con Id " + Id + "?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (Resultado == DialogResult.Yes)
                 {
                     if (materias_SQL.Eliminar_Materia(Id))
