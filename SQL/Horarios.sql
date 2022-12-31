@@ -50,11 +50,10 @@ Insert Into Profesores Values
 (501,'JESUS','GUTIERREZ','MORAN',5,'Vespertino')
 Go
 
-select Nombre,PApellido,SApellido from Profesores where Semestre = 5
 
 Create Table Materias
 (IdMateria INT PRIMARY KEY NOT NULL,
-Nombre NVARCHAR (20) NOT NULL,
+Nombre NVARCHAR (50) NOT NULL,
 Semestre INT NOT NULL)
 Go
 Insert Into Materias Values

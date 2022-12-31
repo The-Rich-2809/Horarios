@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Proyecto_Final.Clases;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
@@ -6,19 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Proyecto_Final.Clases;
-using Proyecto_Final.Forms;
-using System.Diagnostics.Contracts;
 
 namespace Proyecto_Final.SQL
 {
-    internal class Profesores_SQL
+    internal class Materias_SQL
     {
-
         public string Mensaje { get; set; }
-        public DataTable Mostrar_Profesores()
+        public DataTable Mostrar_Materias()
         {
-            DataTable tablaProfes = new DataTable();
+            DataTable tablaMaterias = new DataTable();
 
             Mensaje = String.Empty;
             using (SqlConnection conexion = Conexion.Conectar())
@@ -26,24 +23,24 @@ namespace Proyecto_Final.SQL
                 SqlCommand cmdSelect;
                 SqlDataAdapter adapter = new SqlDataAdapter();
 
-                string sentencia = "select * from Profesores ";
+                string sentencia = "select * from Materias ";
                 try
                 {
                     cmdSelect = new SqlCommand(sentencia, conexion);
                     adapter.SelectCommand = cmdSelect;
                     conexion.Open();
-                    adapter.Fill(tablaProfes);
+                    adapter.Fill(tablaMaterias);
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
 
-                return tablaProfes;
+                return tablaMaterias;
             }
         }
 
-        public bool New_Profesores(Profesores profesores)
+        public bool New_Materias(Materias materias)
         {
             bool Operacion = false;
 
@@ -51,22 +48,20 @@ namespace Proyecto_Final.SQL
             {
                 SqlCommand Consulta;
                 int resultado = 0;
-                string SentenciaSQL = @"Insert Into Profesores Values (@Id,@Nombre,@PA,@SA,@Sem,@Tur)";
+                string SentenciaSQL = @"Insert Into Materias Values (@Id,@Nombre,@Sem)";
                 Consulta = new SqlCommand(SentenciaSQL, conexion);
 
-                Consulta.Parameters.AddWithValue("@Id", profesores.Id);
-                Consulta.Parameters.AddWithValue("@Nombre", profesores.Nombre);
-                Consulta.Parameters.AddWithValue("@PA", profesores.PApellido);
-                Consulta.Parameters.AddWithValue("@SA", profesores.SApellido);
-                Consulta.Parameters.AddWithValue("@Sem", profesores.Semestre);
-                Consulta.Parameters.AddWithValue("@Tur", profesores.Turno);
+                Consulta.Parameters.AddWithValue("@Id", materias.Id);
+                Consulta.Parameters.AddWithValue("@Nombre", materias.Nombre);
+                Consulta.Parameters.AddWithValue("@Sem", materias.Semestre);
+               
                 try
                 {
                     conexion.Open();
                     resultado = Consulta.ExecuteNonQuery();
                     if (resultado > 0)
                     {
-                        Mensaje = "Profesor registrado correctamente";
+                        Mensaje = "Materia registrada correctamente";
                         Operacion = true;
                     }
                 }
@@ -77,23 +72,23 @@ namespace Proyecto_Final.SQL
             }
             return Operacion;
         }
-        public bool Eliminar_Prof(int i)
+        public bool Eliminar_Materia(int i)
 
         {
             using (SqlConnection conexion = Conexion.Conectar())
             {
                 SqlCommand cmdCreate;
                 int filasafectadas;
-                string sentencia = @"delete from Profesores where IdProfe = @id";
+                string sentencia = @"delete from Materia where IdMateria = @id";
                 cmdCreate = new SqlCommand(sentencia, conexion);
-                cmdCreate.Parameters.AddWithValue("@id", Convert.ToString(i));
+                cmdCreate.Parameters.AddWithValue("@id",i);
                 try
                 {
                     conexion.Open();
                     filasafectadas = cmdCreate.ExecuteNonQuery();
                     if (filasafectadas > 0)
                     {
-                        Mensaje = "Usuario elimidado exitosamente";
+                        Mensaje = "Materia eliminada exitosamente";
                         return true;
                     }
                 }
@@ -104,27 +99,27 @@ namespace Proyecto_Final.SQL
             }
             return false;
         }
-        public int generaIdProf(int Id)
+        public int generaIdMateria(int Id)
         {
             int i = 0;
             while (i == 0)
             {
-                DataTable tablaProf = new DataTable();
+                DataTable tablaMateria = new DataTable();
                 using (SqlConnection conexion = Conexion.Conectar())
                 {
                     SqlCommand cmdSelect;
                     SqlDataAdapter adapter = new SqlDataAdapter();
 
-                    string sentencia = @"Select * from Profesores where IdProfe = @Id";
+                    string sentencia = @"Select * from Materias where IdMateria = @Id";
                     try
                     {
                         cmdSelect = new SqlCommand(sentencia, conexion);
                         cmdSelect.Parameters.AddWithValue("@Id", Id);
                         adapter.SelectCommand = cmdSelect;
                         conexion.Open();
-                        adapter.Fill(tablaProf);
+                        adapter.Fill(tablaMateria);
 
-                        if (tablaProf.Rows.Count > 0)
+                        if (tablaMateria.Rows.Count > 0)
                         {
                             Id++;
                         }
@@ -141,7 +136,7 @@ namespace Proyecto_Final.SQL
             }
             return Id;
         }
-        public bool validarProf(Profesores profesores)
+        public bool validarMateria(Materias materias)
         {
             DataTable tablaProf = new DataTable();
 
@@ -150,22 +145,18 @@ namespace Proyecto_Final.SQL
                 SqlCommand cmdSelect;
                 SqlDataAdapter adapter = new SqlDataAdapter();
 
-                string sentencia = @"Select * from Profesores where Nombre = @Nombre and PApellido = @PA and SApellido = @SA and Turno = @Turno and Semestre = @Sem";
+                string sentencia = @"Select * from Materias where Nombre = @Nombre";
                 try
                 {
                     cmdSelect = new SqlCommand(sentencia, conexion);
-                    cmdSelect.Parameters.AddWithValue("@Nombre",profesores.Nombre );
-                    cmdSelect.Parameters.AddWithValue("@PA", profesores.PApellido);
-                    cmdSelect.Parameters.AddWithValue("@SA", profesores.SApellido);
-                    cmdSelect.Parameters.AddWithValue("@Turno", profesores.Turno);
-                    cmdSelect.Parameters.AddWithValue("@Sem", profesores.Semestre);
+                    cmdSelect.Parameters.AddWithValue("@Nombre", materias.Nombre);
                     adapter.SelectCommand = cmdSelect;
                     conexion.Open();
                     adapter.Fill(tablaProf);
 
                     if (tablaProf.Rows.Count > 0)
                     {
-                        Mensaje = "Este profesor ya esta registrado";
+                        Mensaje = "Esta materia ya esta registrada";
                     }
                     else
                     {
@@ -181,3 +172,4 @@ namespace Proyecto_Final.SQL
         }
     }
 }
+
