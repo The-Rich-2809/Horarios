@@ -22,7 +22,7 @@ namespace Proyecto_Final.SQL
                 SqlCommand cmdSelect;
                 SqlDataAdapter adapter = new SqlDataAdapter();
 
-                string sentencia = "select Grupo,Materia,Profesor,Lunes,Martes,Miercoles,Jueves,Viernes from Clases where Turno = @Turno and Semestre = @Semestre";
+                string sentencia = "select Grupo,Materia,Profesor,LunesI,LunesF,MartesI,MartesF,MiercolesI,MiercolesF,JuevesI,JuevesF,ViernesI,ViernesF from Clases where Turno = @Turno and Semestre = @Semestre";
                 try
                 {
                     cmdSelect = new SqlCommand(sentencia, conexion);

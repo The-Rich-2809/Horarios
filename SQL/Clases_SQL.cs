@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics.Contracts;
+using Proyecto_Final.Clases;
 
 namespace Proyecto_Final.SQL
 {
@@ -39,6 +40,42 @@ namespace Proyecto_Final.SQL
                 return tablaClases;
             }
         }
+        public bool ValidarDatos()
+        {
+            DataTable tablaClases = new DataTable();
+
+            using (SqlConnection conexion = Conexion.Conectar())
+            {
+                SqlCommand cmdSelect;
+                SqlDataAdapter adapter = new SqlDataAdapter();
+
+                string sentencia = "select * from Clases where Semestre = @Sem, ";
+                try
+                {
+                    cmdSelect = new SqlCommand(sentencia, conexion);
+                    cmdSelect.Parameters.AddWithValue("@Nombre", profesores.Nombre);
+                    adapter.SelectCommand = cmdSelect;
+                    conexion.Open();
+                    adapter.Fill(tablaClases);
+                    
+                    if (tablaClases.Rows.Count > 0)
+                    {
+                        Mensaje = "Esta clase ya esta registrada";
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+                return false;
+            }
+        }
+
         public DataTable LlenaComboProfes(string Sem,string Turno)
         {
             using (SqlConnection conexion = Conexion.Conectar())

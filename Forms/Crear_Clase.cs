@@ -27,6 +27,14 @@ namespace Proyecto_Final.Forms
         {
             Clases_SQL clases_SQL= new Clases_SQL();
             Dgv_Clases.DataSource =  clases_SQL.Mostrar_Clases();
+            foreach(Control c in this.Gb_Datos.Controls)
+            {
+                c.Enabled = false;
+            }
+            label4.Enabled = true;
+            label5.Enabled = true;
+            Cb_Semestre.Enabled = true;
+            Cb_Turno.Enabled = true;
             Lbl_Id.Text = "";
         }
 
@@ -61,7 +69,6 @@ namespace Proyecto_Final.Forms
                 Cb_Prof.Items.Add(TablaProfes.Rows[i]["Nombre"].ToString() + " " + TablaProfes.Rows[i]["PApellido"].ToString() + " " + TablaProfes.Rows[i]["SApellido"].ToString());
                 Id[i] = TablaProfes.Rows[i]["IdProfe"].ToString();
             }
-            clase.Id = Id;
 
             DataTable TablaMateria = clases_SQL.LlenaComboMateria(Cb_Semestre.Text);
             Cb_Materia.Items.Clear();
@@ -77,6 +84,18 @@ namespace Proyecto_Final.Forms
         {
             if(Cb_Semestre.Text != "" && Cb_Turno.Text != "")
             {
+                foreach(Control c in this.Gb_Datos.Controls)
+                {
+                    c.Enabled = true;
+                }
+                foreach(Control c in this.Gb_Horario.Controls)
+                {
+                    c.Enabled = false;
+                    if(c is CheckBox || c is Label)
+                    {
+                        c.Enabled = true;
+                    }
+                }
                 Lbl_Id.Text = "";
                 return true;
             }
@@ -93,6 +112,64 @@ namespace Proyecto_Final.Forms
             Clases_SQL clases_SQL = new Clases_SQL();
             DataTable TablaProfes = clases_SQL.LlenaComboProfes(Cb_Semestre.Text, Cb_Turno.Text);
             Lbl_Id.Text = TablaProfes.Rows[Cb_Prof.SelectedIndex]["IdProfe"].ToString();
+        }
+
+        private void ChB_Lunes_CheckedChanged(object sender, EventArgs e)
+        {
+            if(ChB_Lunes.Checked)
+            {
+                CB_LunesI.Enabled = true;
+                CB_LunesF.Enabled = true;
+                LlenarComboDias(CB_LunesI,CB_LunesF);
+            }
+            else
+            {
+                CB_LunesI.Enabled = false;
+                CB_LunesF.Enabled = false;
+            }
+        }
+        private void ChB_Martes_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void ChB_Miercoles_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void ChB_Jueves_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void ChB_Viernes_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+        public void LlenarComboDias(ComboBox comboBoxI,ComboBox comboBoxF)
+        {
+            comboBoxI.Items.Clear();
+            comboBoxF.Items.Clear();
+            if(Cb_Turno.Text == "Matutino")
+            {
+                int p = 7, f = 8;
+                for (int i = 0; i < 7; i++)
+                {
+                    comboBoxI.Items.Add(p+ ":00");
+                    comboBoxF.Items.Add(f + ":00");
+                    p++;
+                    f++;
+                }
+            }
+            if (Cb_Turno.Text == "Vespertino")
+            {
+                int p = 15, f = 16;
+                for (int i = 0; i < 7; i++)
+                {
+                    comboBoxI.Items.Add(p + ":00");
+                    comboBoxF.Items.Add(f + ":00");
+                    p++;
+                    f++;
+                }
+            }
         }
     }
 }
