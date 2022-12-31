@@ -20,8 +20,8 @@ namespace Proyecto_Final
             //Application.Run(new Iniciar_Sesion());
             //Application.Run(new Crear_Prof());
             //Application.Run(new Crear_Clase());
-            Application.Run(new Admin());
-
+            //Application.Run(new Admin());
+            Application.Run(new Crear_Materia());
         }
     }
 }

@@ -13,3 +13,19 @@ C:\Users\ricar\Documents\0_Proyecto Final\Proyecto_Final\obj\Debug\Proyecto_Fina
 C:\Users\ricar\Documents\0_Proyecto Final\Proyecto_Final\obj\Debug\Proyecto_Final.Forms.Alumno.resources
 C:\Users\ricar\Documents\0_Proyecto Final\Proyecto_Final\obj\Debug\Proyecto_Final.Forms.Crear_Prof.resources
 C:\Users\ricar\Documents\0_Proyecto Final\Proyecto_Final\obj\Debug\Proyecto_Final.Forms.Crear_Clase.resources
+C:\xampp\htdocs\Horarios\bin\Debug\Proyecto_Final.exe.config
+C:\xampp\htdocs\Horarios\bin\Debug\Proyecto_Final.exe
+C:\xampp\htdocs\Horarios\bin\Debug\Proyecto_Final.pdb
+C:\xampp\htdocs\Horarios\obj\Debug\Proyecto_Final.csproj.AssemblyReference.cache
+C:\xampp\htdocs\Horarios\obj\Debug\Proyecto_Final.csproj.SuggestedBindingRedirects.cache
+C:\xampp\htdocs\Horarios\obj\Debug\Proyecto_Final.Forms.Admin.resources
+C:\xampp\htdocs\Horarios\obj\Debug\Proyecto_Final.Forms.Alumno.resources
+C:\xampp\htdocs\Horarios\obj\Debug\Proyecto_Final.Forms.Crear_Clase.resources
+C:\xampp\htdocs\Horarios\obj\Debug\Proyecto_Final.Forms.Crear_Prof.resources
+C:\xampp\htdocs\Horarios\obj\Debug\Proyecto_Final.Iniciar_Sesion.resources
+C:\xampp\htdocs\Horarios\obj\Debug\Proyecto_Final.Properties.Resources.resources
+C:\xampp\htdocs\Horarios\obj\Debug\Proyecto_Final.csproj.GenerateResource.cache
+C:\xampp\htdocs\Horarios\obj\Debug\Proyecto_Final.csproj.CoreCompileInputs.cache
+C:\xampp\htdocs\Horarios\obj\Debug\Proyecto_Final.exe
+C:\xampp\htdocs\Horarios\obj\Debug\Proyecto_Final.pdb
+C:\xampp\htdocs\Horarios\obj\Debug\Proyecto_Final.Forms.Crear_Materia.resources
