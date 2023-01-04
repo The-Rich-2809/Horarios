@@ -30,7 +30,7 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.Btn_Usuarios = new System.Windows.Forms.Button();
             this.Btn_Clases = new System.Windows.Forms.Button();
             this.Btn_Materias = new System.Windows.Forms.Button();
             this.Btn_Prof = new System.Windows.Forms.Button();
@@ -41,7 +41,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.button5);
-            this.panel1.Controls.Add(this.button4);
+            this.panel1.Controls.Add(this.Btn_Usuarios);
             this.panel1.Controls.Add(this.Btn_Clases);
             this.panel1.Controls.Add(this.Btn_Materias);
             this.panel1.Controls.Add(this.Btn_Prof);
@@ -61,16 +61,16 @@
             this.button5.Text = "button5";
             this.button5.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // Btn_Usuarios
             // 
-            this.button4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button4.Location = new System.Drawing.Point(0, 189);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(200, 63);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.Btn_Usuarios.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Btn_Usuarios.Location = new System.Drawing.Point(0, 189);
+            this.Btn_Usuarios.Name = "Btn_Usuarios";
+            this.Btn_Usuarios.Size = new System.Drawing.Size(200, 63);
+            this.Btn_Usuarios.TabIndex = 3;
+            this.Btn_Usuarios.Text = "Usuarios";
+            this.Btn_Usuarios.UseVisualStyleBackColor = true;
+            this.Btn_Usuarios.Click += new System.EventHandler(this.Btn_Usuarios_Click);
             // 
             // Btn_Clases
             // 
@@ -131,7 +131,7 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button Btn_Usuarios;
         private System.Windows.Forms.Button Btn_Clases;
         private System.Windows.Forms.Button Btn_Materias;
         private System.Windows.Forms.Button Btn_Prof;

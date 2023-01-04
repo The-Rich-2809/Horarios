@@ -46,11 +46,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases\Alumnos.cs" />
     <Compile Include="Clases\Clase.cs" />
     <Compile Include="Clases\Conexion.cs" />
     <Compile Include="Clases\Iniciar.cs" />
     <Compile Include="Clases\Materias.cs" />
     <Compile Include="Clases\Profesores.cs" />
+    <Compile Include="Clases\Reportes.cs" />
     <Compile Include="Clases\Usuario.cs" />
     <Compile Include="Forms\Admin.cs">
       <SubType>Form</SubType>
@@ -106,6 +108,7 @@
     <Compile Include="SQL\Clases_SQL.cs" />
     <Compile Include="SQL\Materias_SQL.cs" />
     <Compile Include="SQL\Profesores_SQL.cs" />
+    <Compile Include="SQL\Reportes_SQL.cs" />
     <Compile Include="SQL\Usuario_SQL.cs" />
     <EmbeddedResource Include="Forms\Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
