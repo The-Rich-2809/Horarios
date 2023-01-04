@@ -119,7 +119,7 @@ namespace Proyecto_Final.SQL
                     filasafectadas = cmdCreate.ExecuteNonQuery();
                     if (filasafectadas > 0)
                     {
-                        Mensaje = "Profesor elimidado exitosamente";
+                        Mensaje = "Profesor eliminado exitosamente";
                         return true;
                     }
                 }
