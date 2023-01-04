@@ -11,7 +11,7 @@ Use Horario
 Go
 
 CREATE TABLE Users
-(IdEmpleado INT PRIMARY KEY NOT NULL,
+(IdUsuario INT PRIMARY KEY NOT NULL,
 Usuario NVARCHAR (20) NOT NULL,
 Contrasena  VARBINARY(20) NOT NULL,
 Nivel_Usuario INT NOT NULL,

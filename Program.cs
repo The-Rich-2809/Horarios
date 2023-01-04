@@ -22,6 +22,7 @@ namespace Proyecto_Final
             //Application.Run(new Crear_Clase());
             //Application.Run(new Admin());
             //Application.Run(new Crear_Materia());
+            //Application.Run(new Crear_User());
         }
     }
 }
