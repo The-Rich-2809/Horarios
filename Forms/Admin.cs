@@ -52,5 +52,10 @@ namespace Proyecto_Final.Forms
         {
             NewForm(new Crear_Clase());
         }
+
+        private void Btn_Usuarios_Click(object sender, EventArgs e)
+        {
+            NewForm(new Crear_User());
+        }
     }
 }
