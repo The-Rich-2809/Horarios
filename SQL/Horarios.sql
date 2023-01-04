@@ -1,8 +1,13 @@
+SET NOCOUNT ON
+GO
+USE MASTER
+GO
+IF EXISTS (SELECT * FROM sysdatabases WHERE NAME='Horario')
+		DROP DATABASE Horario
+GO
 Create DataBase Horario 
 Go
 Use Horario 
-Go
-Set Nocount on 
 Go
 
 CREATE TABLE Users
@@ -12,8 +17,8 @@ Contrasena  VARBINARY(20) NOT NULL,
 Nivel_Empleado INT NOT NULL,)
 Go
 Insert Into Users Values 
-(0, LOWER('juan'),HASHBYTES('SHA1',N'bonafont13'),1),
-(1, LOWER('paco'),HASHBYTES('SHA1',N'bonafont14'),0)
+(0,'juan',HASHBYTES('SHA1',N'bonafont13'),1),
+(1,'paco',HASHBYTES('SHA1',N'bonafont14'),0)
 Go
 
 Create Table Clases
@@ -47,23 +52,23 @@ Nombre NVARCHAR (20) NOT NULL,
 PApellido NVARCHAR (15) NOT NULL,
 SApellido NVARCHAR (15) NOT NULL,
 Semestre INT NOT NULL,
-Turno NVARCHAR (10) NOT NULL)
+Turno NVARCHAR (10) NOT NULL,
+Clases INT NOT NULL)
 Go
 Insert Into Profesores Values
-(101,'JUAN JOSE','BELTRAN','CORONA',1,'Vespertino'),
-(301,'HECTOR MANUEL','MENDOZA','QUIROZ',3,'Vespertino'),
-(501,'JESUS','GUTIERREZ','MORAN',5,'Vespertino')
+(101,'JUAN JOSE','BELTRAN','CORONA',1,'Vespertino',1),
+(301,'HECTOR MANUEL','MENDOZA','QUIROZ',3,'Vespertino',1),
+(501,'JESUS','GUTIERREZ','MORAN',5,'Vespertino',1)
 Go
-
-select Nombre,PApellido,SApellido from Profesores where Semestre = 5
 
 Create Table Materias
 (IdMateria INT PRIMARY KEY NOT NULL,
 Nombre NVARCHAR (20) NOT NULL,
-Semestre INT NOT NULL)
+Semestre INT NOT NULL,
+Clases INT NOT NULL)
 Go
 Insert Into Materias Values
-(101,'ÁLGEBRA',1),
-(301,'GEOMETRIA ANALITICA',3),
-(501,'CALCULO INTEGRAL',5)
+(101,'ÁLGEBRA',1,1),
+(301,'GEOMETRIA ANALITICA',3,1),
+(501,'CALCULO INTEGRAL',5,1)
 Go

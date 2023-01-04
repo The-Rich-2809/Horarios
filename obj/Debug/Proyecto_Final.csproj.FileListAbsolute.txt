@@ -13,3 +13,4 @@ C:\Users\ricar\Documents\0_Proyecto Final\Proyecto_Final\obj\Debug\Proyecto_Fina
 C:\Users\ricar\Documents\0_Proyecto Final\Proyecto_Final\obj\Debug\Proyecto_Final.Forms.Alumno.resources
 C:\Users\ricar\Documents\0_Proyecto Final\Proyecto_Final\obj\Debug\Proyecto_Final.Forms.Crear_Prof.resources
 C:\Users\ricar\Documents\0_Proyecto Final\Proyecto_Final\obj\Debug\Proyecto_Final.Forms.Crear_Clase.resources
+C:\Users\ricar\Documents\0_Proyecto Final\Proyecto_Final\obj\Debug\Proyecto_Final.Forms.Crear_Materia.resources

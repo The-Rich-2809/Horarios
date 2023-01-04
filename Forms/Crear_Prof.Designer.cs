@@ -33,11 +33,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.Txt_Turno = new System.Windows.Forms.ComboBox();
-            this.Txt_Semestre = new System.Windows.Forms.ComboBox();
+            this.CTxt_Turno = new System.Windows.Forms.ComboBox();
+            this.CTxt_Semestre = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.Btn_Agregar = new System.Windows.Forms.Button();
             this.Gb_Acciones = new System.Windows.Forms.GroupBox();
+            this.Btn_Cancelar = new System.Windows.Forms.Button();
+            this.Btn_Nuevo = new System.Windows.Forms.Button();
             this.Btn_Eliminar = new System.Windows.Forms.Button();
             this.Btn_Mod = new System.Windows.Forms.Button();
             this.Btn_Modificar = new System.Windows.Forms.Button();
@@ -45,8 +47,6 @@
             this.Txt_2Apellido = new System.Windows.Forms.TextBox();
             this.Dgv_Profes = new System.Windows.Forms.DataGridView();
             this.Gb_Datos = new System.Windows.Forms.GroupBox();
-            this.Btn_Nuevo = new System.Windows.Forms.Button();
-            this.Btn_Cancelar = new System.Windows.Forms.Button();
             this.Gb_Acciones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Profes)).BeginInit();
             this.Gb_Datos.SuspendLayout();
@@ -95,31 +95,31 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Turno";
             // 
-            // Txt_Turno
+            // CTxt_Turno
             // 
-            this.Txt_Turno.FormattingEnabled = true;
-            this.Txt_Turno.Items.AddRange(new object[] {
+            this.CTxt_Turno.FormattingEnabled = true;
+            this.CTxt_Turno.Items.AddRange(new object[] {
             "Matutino",
             "Vespertino"});
-            this.Txt_Turno.Location = new System.Drawing.Point(279, 128);
-            this.Txt_Turno.Name = "Txt_Turno";
-            this.Txt_Turno.Size = new System.Drawing.Size(121, 28);
-            this.Txt_Turno.TabIndex = 7;
+            this.CTxt_Turno.Location = new System.Drawing.Point(279, 128);
+            this.CTxt_Turno.Name = "CTxt_Turno";
+            this.CTxt_Turno.Size = new System.Drawing.Size(121, 28);
+            this.CTxt_Turno.TabIndex = 7;
             // 
-            // Txt_Semestre
+            // CTxt_Semestre
             // 
-            this.Txt_Semestre.FormattingEnabled = true;
-            this.Txt_Semestre.Items.AddRange(new object[] {
+            this.CTxt_Semestre.FormattingEnabled = true;
+            this.CTxt_Semestre.Items.AddRange(new object[] {
             "1",
             "2",
             "3",
             "4",
             "5",
             "6"});
-            this.Txt_Semestre.Location = new System.Drawing.Point(152, 128);
-            this.Txt_Semestre.Name = "Txt_Semestre";
-            this.Txt_Semestre.Size = new System.Drawing.Size(121, 28);
-            this.Txt_Semestre.TabIndex = 8;
+            this.CTxt_Semestre.Location = new System.Drawing.Point(152, 128);
+            this.CTxt_Semestre.Name = "CTxt_Semestre";
+            this.CTxt_Semestre.Size = new System.Drawing.Size(121, 28);
+            this.CTxt_Semestre.TabIndex = 8;
             // 
             // label5
             // 
@@ -154,6 +154,26 @@
             this.Gb_Acciones.TabIndex = 14;
             this.Gb_Acciones.TabStop = false;
             this.Gb_Acciones.Text = "Acciones";
+            // 
+            // Btn_Cancelar
+            // 
+            this.Btn_Cancelar.Location = new System.Drawing.Point(125, 128);
+            this.Btn_Cancelar.Name = "Btn_Cancelar";
+            this.Btn_Cancelar.Size = new System.Drawing.Size(113, 41);
+            this.Btn_Cancelar.TabIndex = 17;
+            this.Btn_Cancelar.Text = "Cancelar";
+            this.Btn_Cancelar.UseVisualStyleBackColor = true;
+            this.Btn_Cancelar.Click += new System.EventHandler(this.Btn_Cancelar_Click);
+            // 
+            // Btn_Nuevo
+            // 
+            this.Btn_Nuevo.Location = new System.Drawing.Point(6, 35);
+            this.Btn_Nuevo.Name = "Btn_Nuevo";
+            this.Btn_Nuevo.Size = new System.Drawing.Size(113, 41);
+            this.Btn_Nuevo.TabIndex = 16;
+            this.Btn_Nuevo.Text = "Nuevo";
+            this.Btn_Nuevo.UseVisualStyleBackColor = true;
+            this.Btn_Nuevo.Click += new System.EventHandler(this.Btn_Nuevo_Click);
             // 
             // Btn_Eliminar
             // 
@@ -216,7 +236,7 @@
             // 
             // Gb_Datos
             // 
-            this.Gb_Datos.Controls.Add(this.Txt_Turno);
+            this.Gb_Datos.Controls.Add(this.CTxt_Turno);
             this.Gb_Datos.Controls.Add(this.Btn_Nombre);
             this.Gb_Datos.Controls.Add(this.Txt_2Apellido);
             this.Gb_Datos.Controls.Add(this.Txt_Nombre);
@@ -225,33 +245,13 @@
             this.Gb_Datos.Controls.Add(this.label3);
             this.Gb_Datos.Controls.Add(this.label5);
             this.Gb_Datos.Controls.Add(this.label4);
-            this.Gb_Datos.Controls.Add(this.Txt_Semestre);
+            this.Gb_Datos.Controls.Add(this.CTxt_Semestre);
             this.Gb_Datos.Location = new System.Drawing.Point(80, 359);
             this.Gb_Datos.Name = "Gb_Datos";
             this.Gb_Datos.Size = new System.Drawing.Size(528, 162);
             this.Gb_Datos.TabIndex = 18;
             this.Gb_Datos.TabStop = false;
             this.Gb_Datos.Text = "Datos del profesor";
-            // 
-            // Btn_Nuevo
-            // 
-            this.Btn_Nuevo.Location = new System.Drawing.Point(6, 35);
-            this.Btn_Nuevo.Name = "Btn_Nuevo";
-            this.Btn_Nuevo.Size = new System.Drawing.Size(113, 41);
-            this.Btn_Nuevo.TabIndex = 16;
-            this.Btn_Nuevo.Text = "Nuevo";
-            this.Btn_Nuevo.UseVisualStyleBackColor = true;
-            this.Btn_Nuevo.Click += new System.EventHandler(this.Btn_Nuevo_Click);
-            // 
-            // Btn_Cancelar
-            // 
-            this.Btn_Cancelar.Location = new System.Drawing.Point(125, 128);
-            this.Btn_Cancelar.Name = "Btn_Cancelar";
-            this.Btn_Cancelar.Size = new System.Drawing.Size(113, 41);
-            this.Btn_Cancelar.TabIndex = 17;
-            this.Btn_Cancelar.Text = "Cancelar";
-            this.Btn_Cancelar.UseVisualStyleBackColor = true;
-            this.Btn_Cancelar.Click += new System.EventHandler(this.Btn_Cancelar_Click);
             // 
             // Crear_Prof
             // 
@@ -279,8 +279,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox Txt_Turno;
-        private System.Windows.Forms.ComboBox Txt_Semestre;
+        private System.Windows.Forms.ComboBox CTxt_Turno;
+        private System.Windows.Forms.ComboBox CTxt_Semestre;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button Btn_Agregar;
         private System.Windows.Forms.GroupBox Gb_Acciones;

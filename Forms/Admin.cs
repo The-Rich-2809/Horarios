@@ -52,5 +52,9 @@ namespace Proyecto_Final.Forms
         {
             NewForm(new Crear_Clase());
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+        }
     }
 }
