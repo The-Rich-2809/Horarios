@@ -63,7 +63,7 @@ Go
 
 Create Table Materias
 (IdMateria INT PRIMARY KEY NOT NULL,
-Nombre NVARCHAR (20) NOT NULL,
+Nombre NVARCHAR (50) NOT NULL,
 Semestre INT NOT NULL,
 Clases INT NOT NULL)
 Go
@@ -71,4 +71,16 @@ Insert Into Materias Values
 (101,'ÁLGEBRA',1,1),
 (301,'GEOMETRIA ANALITICA',3,1),
 (501,'CALCULO INTEGRAL',5,1)
+Go
+
+Create Table Reportes
+(IdReporte INT PRIMARY KEY NOT NULL,
+Grupo NVARCHAR (5) NOT NULL,
+Turno NVARCHAR (10) NOT NULL,
+Materia NVARCHAR (50) NOT NULL,
+DiaReporte Date NOT NULL,
+Reporte TEXT NOT NULL)
+Go
+Insert Into Reportes Values
+(1,'1IV1','Vespertino','ÁLGEBRA','2021/03/04','El maestro no se presento')
 Go

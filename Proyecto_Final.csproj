@@ -52,6 +52,7 @@
     <Compile Include="Clases\Iniciar.cs" />
     <Compile Include="Clases\Materias.cs" />
     <Compile Include="Clases\Profesores.cs" />
+    <Compile Include="Clases\Reportes.cs" />
     <Compile Include="Forms\Admin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +107,7 @@
     <Compile Include="SQL\Clases_SQL.cs" />
     <Compile Include="SQL\Materias_SQL.cs" />
     <Compile Include="SQL\Profesores_SQL.cs" />
+    <Compile Include="SQL\Reportes_SQL.cs" />
     <EmbeddedResource Include="Forms\Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
     </EmbeddedResource>
@@ -123,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Iniciar_Sesion.resx">
       <DependentUpon>Iniciar_Sesion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Prefecto.resx">
+      <DependentUpon>Prefecto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
