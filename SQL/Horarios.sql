@@ -1,19 +1,25 @@
+Set Nocount on 
+Go
+Use master
+Go
+IF EXISTS (SELECT * FROM sysdatabases WHERE NAME='Horario')
+		DROP DATABASE Horario
+GO
 Create DataBase Horario 
 Go
 Use Horario 
-Go
-Set Nocount on 
 Go
 
 CREATE TABLE Users
 (IdEmpleado INT PRIMARY KEY NOT NULL,
 Usuario NVARCHAR (20) NOT NULL,
 Contrasena  VARBINARY(20) NOT NULL,
-Nivel_Empleado INT NOT NULL,)
+Nivel_Usuario INT NOT NULL,
+Nombre VARCHAR (20) NOT NULL,)
 Go
 Insert Into Users Values 
-(0, LOWER('juan'),HASHBYTES('SHA1',N'bonafont13'),1),
-(1, LOWER('paco'),HASHBYTES('SHA1',N'bonafont14'),0)
+(0, 'Juan',HASHBYTES('SHA1',N'bonafont13'),1,'Juanito R.'),
+(1,'Paco',HASHBYTES('SHA1',N'bonafont14'),0,'Francisco A.')
 Go
 
 Create Table Clases

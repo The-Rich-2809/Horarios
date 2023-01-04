@@ -79,7 +79,7 @@ namespace Proyecto_Final.SQL
             {
                 SqlCommand cmdCreate;
                 int filasafectadas;
-                string sentencia = @"delete from Materia where IdMateria = @id";
+                string sentencia = @"delete from Materias where IdMateria = @id";
                 cmdCreate = new SqlCommand(sentencia, conexion);
                 cmdCreate.Parameters.AddWithValue("@id",i);
                 try
