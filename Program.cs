@@ -17,10 +17,10 @@ namespace Proyecto_Final
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Iniciar_Sesion());
+            Application.Run(new Iniciar_Sesion());
             //Application.Run(new Crear_Prof());
             //Application.Run(new Crear_Clase());
-            Application.Run(new Admin());
+            //Application.Run(new Admin());
             //Application.Run(new Crear_Materia());
             //Application.Run(new Crear_User());
             //Application.Run(new Prefecto());

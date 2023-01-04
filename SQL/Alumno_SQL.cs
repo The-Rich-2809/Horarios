@@ -85,7 +85,7 @@ namespace Proyecto_Final.SQL
                 SqlCommand cmdSelect;
                 SqlDataAdapter AdapterRoles = new SqlDataAdapter();
                 DataTable TablaMaterias = new DataTable();
-                string sentencia = "Select Nombre from Materias Where Semestre = @Semestre";
+                string sentencia = "Select Materia from Clases Where Semestre = @Semestre";
                 try
                 {
                     cmdSelect = new SqlCommand(sentencia, conexion);
@@ -101,7 +101,7 @@ namespace Proyecto_Final.SQL
                 return TablaMaterias;
             }
         }
-        public string[] LlenaComboProfes(string semestre)
+        public string[] LlenaComboProfes(string semestre, string turno )
         {
             using (SqlConnection conexion = Conexion.Conectar())
             {
@@ -109,11 +109,12 @@ namespace Proyecto_Final.SQL
                 SqlCommand cmdSelect;
                 SqlDataAdapter AdapterRoles = new SqlDataAdapter();
                 DataTable TablaRoles = new DataTable();
-                string sentencia = "Select Nombre,PApellido,SApellido from Profesores Where Semestre = @Semestre";
+                string sentencia = "Select Profesor from Clases Where Semestre = @Semestre and Turno = @Turno";
                 try
                 {
                     cmdSelect = new SqlCommand(sentencia, conexion);
                     cmdSelect.Parameters.AddWithValue("@Semestre", semestre);
+                    cmdSelect.Parameters.AddWithValue("@Turno", turno);
                     AdapterRoles.SelectCommand = cmdSelect;
                     conexion.Open();
                     AdapterRoles.Fill(TablaRoles);
@@ -121,7 +122,7 @@ namespace Proyecto_Final.SQL
 
                     for (int i = 0; i <= TablaRoles.Rows.Count - 1; i++)
                     {
-                        array[i] = TablaRoles.Rows[i]["Nombre"].ToString() + " " + TablaRoles.Rows[i]["PApellido"].ToString() + " " + TablaRoles.Rows[i]["SApellido"].ToString();
+                        array[i] = TablaRoles.Rows[i]["Profesor"].ToString();
                     }
                     return array;
                 }

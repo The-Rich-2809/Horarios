@@ -77,7 +77,21 @@ namespace Proyecto_Final.Forms
         {
             if(Validar())
             {
-                //reportes.
+                reportes.IdReporte = reportes_SQL.generaIdUsuario();
+                reportes.Turno = Cb_Turno.Text;
+                reportes.Grupo= Cb_Grupo.Text;
+                reportes.Materia = Cb_Materia.Text;
+                reportes.DiaReporte = Dtp_DiaReporte.Value.Year + "/"+ Dtp_DiaReporte.Value.Month + "/"+ Dtp_DiaReporte.Value.Day;
+                reportes.Reporte = Txt_Reporte.Text;
+                if(reportes_SQL.New_Reporte(reportes))
+                {
+                    MessageBox.Show(reportes_SQL.Mensaje);
+                    Inicio();
+                }
+                else
+                {
+                    MessageBox.Show(reportes_SQL.Mensaje);
+                }
             }
             else
             {
@@ -86,7 +100,21 @@ namespace Proyecto_Final.Forms
         }
         private void Btn_Eliminar_Click(object sender, EventArgs e)
         {
-
+            int RenglonSeleccionado = Dgv_Reportes.CurrentRow.Index;
+            string IdClase = Dgv_Reportes.Rows[RenglonSeleccionado].Cells[0].Value.ToString();
+            DialogResult Resultado = MessageBox.Show("¿Desea eliminar el reporte con Id " + IdClase + "?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (Resultado == DialogResult.Yes)
+            {
+                if(reportes_SQL.Eliminar_Reporte(IdClase))
+                {
+                    MessageBox.Show(reportes_SQL.Mensaje);
+                    Inicio();
+                }
+                else
+                {
+                    MessageBox.Show(reportes_SQL.Mensaje);
+                }
+            }
         }
         private void Btn_Cancelar_Click(object sender, EventArgs e)
         {

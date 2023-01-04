@@ -47,16 +47,40 @@ namespace Proyecto_Final.Forms
                 Alumno_SQL alumno_SQL = new Alumno_SQL();
 
                 data = alumno_SQL.LlenaComboMaterias(Cb_Semestre.Text);
-                for (int i = 0; i < data.Columns.Count; i++)
+                for (int i = 0; i <= data.Columns.Count; i++)
                 {
-                    Ctxt_Materia.Items.Add(data.Rows[i]["Nombre"].ToString());
+                    try
+                    {
+                        Ctxt_Materia.Items.Add(data.Rows[i]["Materia"].ToString());
+                    }
+                    catch
+                    {
+                        Ctxt_Materia.Items.Add("");
+                    }
                 }
 
-                string[] prof = alumno_SQL.LlenaComboProfes(Cb_Semestre.Text);
-                
-                for(int i = 0; i <= prof.Length-1; i++)
+                string turno = "";
+                if(Rb_Matutino.Checked)
                 {
-                    Ctxt_Profesor.Items.Add(prof[i]);
+                    turno = Rb_Matutino.Text;
+                }
+                if(Rb_Vespertino.Checked)
+                {
+                    turno = Rb_Vespertino.Text;
+                }
+                string[] prof = alumno_SQL.LlenaComboProfes(Cb_Semestre.Text,turno);
+                
+                for(int i = 0; i <= prof.Length; i++)
+                {
+                    try
+                    {
+                        Ctxt_Profesor.Items.Add(prof[i]);
+                    }
+                    catch
+                    {
+                        Ctxt_Profesor.Items.Add("");
+                    }
+
                 }
                 Alumnos alumnos = new Alumnos();
                 alumnos.Semestre = Cb_Semestre.Text;
@@ -91,6 +115,7 @@ namespace Proyecto_Final.Forms
             else
             {
                 Inicio();
+                Buscar();
                 Cb_Filtros.Enabled = true;
             }
         }

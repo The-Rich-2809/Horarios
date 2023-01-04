@@ -34,7 +34,7 @@ namespace Proyecto_Final
 
                     if (tablaUsuarios.Rows.Count > 0)
                     {
-                        string nivel = tablaUsuarios.Rows[0]["Nivel_Empleado"].ToString();
+                        string nivel = tablaUsuarios.Rows[0]["Nivel_Usuario"].ToString();
                         if (nivel == "0")
                         {
                             Prefecto prefecto = new Prefecto();

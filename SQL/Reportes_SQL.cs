@@ -91,6 +91,97 @@ namespace Proyecto_Final.SQL
                 return tablaClases;
             }
         }
+        public bool New_Reporte(Reportes reportes)
+        {
+            bool Operacion = false;
+
+            using (SqlConnection conexion = Conexion.Conectar())
+            {
+                SqlCommand Consulta;
+                int resultado = 0;
+                string SentenciaSQL = @"Insert Into Reportes Values (@Id,@Grupo,@Turno,@Materia,@DiaReporte,@Reporte)";
+                Consulta = new SqlCommand(SentenciaSQL, conexion);
+
+                Consulta.Parameters.AddWithValue("@Id", reportes.IdReporte);
+                Consulta.Parameters.AddWithValue("@Grupo", reportes.Grupo);
+                Consulta.Parameters.AddWithValue("@Turno", reportes.Turno);
+                Consulta.Parameters.AddWithValue("@Materia", reportes.Materia);
+                Consulta.Parameters.AddWithValue("@DiaReporte", reportes.DiaReporte);
+                Consulta.Parameters.AddWithValue("@Reporte", reportes.Reporte);
+                try
+                {
+                    conexion.Open();
+                    resultado = Consulta.ExecuteNonQuery();
+                    if (resultado > 0)
+                    {
+                        Mensaje = "Reporte registrado correctamente";
+                        Operacion = true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Mensaje = ex.Message;
+                }
+            }
+            return Operacion;
+        }
+        public bool Eliminar_Reporte(string i)
+        {
+            using (SqlConnection conexion = Conexion.Conectar())
+            {
+                SqlCommand cmdCreate;
+                int filasafectadas;
+                string sentencia = @"delete from Reportes where IdReporte = @id";
+                cmdCreate = new SqlCommand(sentencia, conexion);
+                cmdCreate.Parameters.AddWithValue("@id", Convert.ToString(i));
+                try
+                {
+                    conexion.Open();
+                    filasafectadas = cmdCreate.ExecuteNonQuery();
+                    if (filasafectadas > 0)
+                    {
+                        Mensaje = "Reporte elimidado exitosamente";
+                        return true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Mensaje = ex.Message;
+                }
+            }
+            return false;
+        }
+
+        public int generaIdUsuario()
+        {
+            object tmp;
+            int IdReporte = 0;
+            using (SqlConnection conexion = Conexion.Conectar())
+            {
+                SqlCommand cmdCreate;
+                string sentencia = "select max(IdReporte) from Reportes";
+                try
+                {
+                    cmdCreate = new SqlCommand(sentencia, conexion);
+                    conexion.Open();
+                    tmp = cmdCreate.ExecuteScalar();
+                    if (tmp.Equals(DBNull.Value))
+                    {
+                        IdReporte = 1;
+                    }
+                    else
+                    {
+                        IdReporte = Convert.ToInt32(tmp);
+                        IdReporte++;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            return IdReporte;
+        }
 
     }
 }

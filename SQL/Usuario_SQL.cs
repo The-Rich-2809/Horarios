@@ -93,13 +93,23 @@ namespace Proyecto_Final.SQL
                 SqlCommand cmdCreate;
 
                 int filasafectadas;
-               
-                    string sentencia = @"update Users set Usuario = @User, Contrasena = HASHBYTES('SHA1',@Contra), Nivel_Usuario = @Nivel,Nombre = @NOMBRE";
-                    cmdCreate = new SqlCommand(sentencia, conexion);
+                    if(usuarios.Password != "")
+                    { 
+                        string sentencia = @"update Users set Usuario = @User, Contrasena = HASHBYTES('SHA1',@Contra), Nivel_Usuario = @Nivel,Nombre = @NOMBRE where IdUsuario = @Id";
+                        cmdCreate = new SqlCommand(sentencia, conexion);
+                    }
+                    else
+                    {
+                        string sentencia = @"update Users set Usuario = @User, Nivel_Usuario = @Nivel,Nombre = @NOMBRE where IdUsuario = @Id";
+                        cmdCreate = new SqlCommand(sentencia, conexion);
+                    }
+                    
                     cmdCreate.Parameters.AddWithValue("@User", usuarios.UserName);
                     cmdCreate.Parameters.AddWithValue("@Contra", usuarios.Password);
                     cmdCreate.Parameters.AddWithValue("@Nivel", usuarios.UserLevel);
                     cmdCreate.Parameters.AddWithValue("@NOMBRE", usuarios.Name);
+                    cmdCreate.Parameters.AddWithValue("@Id", usuarios.Id);
+
 
                 try
                 {
@@ -128,14 +138,14 @@ namespace Proyecto_Final.SQL
                 int filasafectadas;
                 string sentencia = @"delete from Users where IdUsuario = @id";
                 cmdCreate = new SqlCommand(sentencia, conexion);
-                cmdCreate.Parameters.AddWithValue("@id", Convert.ToString(i));
+                cmdCreate.Parameters.AddWithValue("@id", i);
                 try
                 {
                     conexion.Open();
                     filasafectadas = cmdCreate.ExecuteNonQuery();
                     if (filasafectadas > 0)
                     {
-                        Mensaje = "Usuario elimidado exitosamente";
+                        Mensaje = "Usuario eliminado exitosamente";
                         return true;
                     }
                 }
@@ -174,35 +184,42 @@ namespace Proyecto_Final.SQL
         }
 
         
-        public int generaIdUsuario()
+        public int generaIdUsuario(int Id)
         {
-            object tmp;
-            int IdUsuario = 0;
-            using (SqlConnection conexion = Conexion.Conectar())
+            int i = 0;
+            while (i == 0)
             {
-                SqlCommand cmdCreate;
-                string sentencia = "select max(IdUsuario) from Users";
-                try
+                DataTable tablaUsers = new DataTable();
+                using (SqlConnection conexion = Conexion.Conectar())
                 {
-                    cmdCreate = new SqlCommand(sentencia, conexion);
-                    conexion.Open();
-                    tmp = cmdCreate.ExecuteScalar();
-                    if (tmp.Equals(DBNull.Value))
+                    SqlCommand cmdSelect;
+                    SqlDataAdapter adapter = new SqlDataAdapter();
+
+                    string sentencia = @"Select * from Users where IdUsuario = @Id";
+                    try
                     {
-                        IdUsuario = 1;
+                        cmdSelect = new SqlCommand(sentencia, conexion);
+                        cmdSelect.Parameters.AddWithValue("@Id", Id);
+                        adapter.SelectCommand = cmdSelect;
+                        conexion.Open();
+                        adapter.Fill(tablaUsers);
+
+                        if (tablaUsers.Rows.Count > 0)
+                        {
+                            Id++;
+                        }
+                        else
+                        {
+                            i = 1;
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        IdUsuario = Convert.ToInt32(tmp);
-                        IdUsuario++;
+                        MessageBox.Show(ex.Message);
                     }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
                 }
             }
-            return IdUsuario;
+            return Id;
         }
         public bool validarUser(Usuario user)
         {

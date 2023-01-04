@@ -122,7 +122,7 @@
             this.Btn_Buscar.Name = "Btn_Buscar";
             this.Btn_Buscar.Size = new System.Drawing.Size(276, 58);
             this.Btn_Buscar.TabIndex = 19;
-            this.Btn_Buscar.Text = "Buscar Profesor";
+            this.Btn_Buscar.Text = "Alumnos";
             this.Btn_Buscar.UseVisualStyleBackColor = false;
             this.Btn_Buscar.Click += new System.EventHandler(this.Btn_Buscar_Click);
             // 
