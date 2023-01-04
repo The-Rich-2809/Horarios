@@ -18,6 +18,10 @@ namespace Proyecto_Final.Forms
         {
             InitializeComponent();
         }
+        private void Crear_Materia_Load(object sender, EventArgs e)
+        {
+            Inicio();
+        }
 
         public void Mostrar()
         {
@@ -69,7 +73,6 @@ namespace Proyecto_Final.Forms
             Btn_Agregar.Enabled = true;
             Btn_Cancelar.Enabled = true;
         }
-
         private void Btn_Agregar_Click(object sender, EventArgs e)
         {
             if (Validar())
@@ -100,36 +103,40 @@ namespace Proyecto_Final.Forms
                 }
             }
         }
-
         private void Btn_Eliminar_Click(object sender, EventArgs e)
         {
             if (Dgv_Materias.Rows.Count > 0)
             {
                 Materias_SQL materias_SQL = new Materias_SQL();
                 int RenglonSeleccionado = Dgv_Materias.CurrentRow.Index;
-                int Id = Convert.ToInt32(Dgv_Materias.Rows[RenglonSeleccionado].Cells[0].Value.ToString());
-                DialogResult Resultado = MessageBox.Show("¿Deseas eliminar la materia con Id " + Id + "?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (Resultado == DialogResult.Yes)
+                string Id = Dgv_Materias.Rows[RenglonSeleccionado].Cells[0].Value.ToString();
+                if(materias_SQL.validarClases(Id))
                 {
-                    if (materias_SQL.Eliminar_Materia(Id))
+                    if(Dgv_Materias.Rows.Count > 0)
                     {
-                        MessageBox.Show(materias_SQL.Mensaje);
+                        DialogResult Resultado = MessageBox.Show("¿Deseas eliminar la materia con Id " + Id + "?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        if (Resultado == DialogResult.Yes)
+                        {
+                            if (materias_SQL.Eliminar_Materia(Id))
+                            {
+                                MessageBox.Show(materias_SQL.Mensaje);
+                            }
+                            else
+                            {
+                                MessageBox.Show(materias_SQL.Mensaje);
+                            }
+                        }
+                        Inicio();
                     }
                     else
                     {
-                        MessageBox.Show(materias_SQL.Mensaje);
+                        MessageBox.Show("No hay datos a eliminar");
                     }
                 }
-                Inicio();
+               
             }
         }
-
         private void Btn_Cancelar_Click(object sender, EventArgs e)
-        {
-            Inicio();
-        }
-
-        private void Crear_Materia_Load(object sender, EventArgs e)
         {
             Inicio();
         }

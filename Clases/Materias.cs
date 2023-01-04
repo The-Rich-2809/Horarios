@@ -13,5 +13,6 @@ namespace Proyecto_Final.Clases
         public string Id { get; set; }
         public string Nombre { get; set; }
         public int Semestre { get; set; }
+        public int Clase { get; set; }
     }
 }

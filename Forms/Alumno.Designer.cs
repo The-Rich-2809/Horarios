@@ -31,7 +31,6 @@
             this.Dgv_Horario = new System.Windows.Forms.DataGridView();
             this.Turno = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.Btn_Buscar = new System.Windows.Forms.Button();
             this.Cb_Semestre = new System.Windows.Forms.ComboBox();
             this.Rb_Vespertino = new System.Windows.Forms.RadioButton();
             this.Rb_Matutino = new System.Windows.Forms.RadioButton();
@@ -43,6 +42,7 @@
             this.Ctxt_Profesor = new System.Windows.Forms.ComboBox();
             this.Cb_Filtros = new System.Windows.Forms.CheckBox();
             this.Gb_Filtros = new System.Windows.Forms.GroupBox();
+            this.Btn_Buscar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Horario)).BeginInit();
             this.Turno.SuspendLayout();
             this.Gb_Filtros.SuspendLayout();
@@ -62,13 +62,12 @@
             // Turno
             // 
             this.Turno.Controls.Add(this.label1);
-            this.Turno.Controls.Add(this.Btn_Buscar);
             this.Turno.Controls.Add(this.Cb_Semestre);
             this.Turno.Controls.Add(this.Rb_Vespertino);
             this.Turno.Controls.Add(this.Rb_Matutino);
             this.Turno.Location = new System.Drawing.Point(22, 12);
             this.Turno.Name = "Turno";
-            this.Turno.Size = new System.Drawing.Size(226, 259);
+            this.Turno.Size = new System.Drawing.Size(226, 194);
             this.Turno.TabIndex = 1;
             this.Turno.TabStop = false;
             this.Turno.Text = "Turno y Semestre";
@@ -81,16 +80,6 @@
             this.label1.Size = new System.Drawing.Size(78, 20);
             this.label1.TabIndex = 4;
             this.label1.Text = "Semestre";
-            // 
-            // Btn_Buscar
-            // 
-            this.Btn_Buscar.Location = new System.Drawing.Point(46, 184);
-            this.Btn_Buscar.Name = "Btn_Buscar";
-            this.Btn_Buscar.Size = new System.Drawing.Size(113, 37);
-            this.Btn_Buscar.TabIndex = 3;
-            this.Btn_Buscar.Text = "Buscar";
-            this.Btn_Buscar.UseVisualStyleBackColor = true;
-            this.Btn_Buscar.Click += new System.EventHandler(this.Btn_Buscar_Click);
             // 
             // Cb_Semestre
             // 
@@ -106,6 +95,7 @@
             this.Cb_Semestre.Name = "Cb_Semestre";
             this.Cb_Semestre.Size = new System.Drawing.Size(174, 28);
             this.Cb_Semestre.TabIndex = 2;
+            this.Cb_Semestre.SelectedIndexChanged += new System.EventHandler(this.Cb_Semestre_SelectedIndexChanged);
             // 
             // Rb_Vespertino
             // 
@@ -117,6 +107,7 @@
             this.Rb_Vespertino.TabStop = true;
             this.Rb_Vespertino.Text = "Vespertino";
             this.Rb_Vespertino.UseVisualStyleBackColor = true;
+            this.Rb_Vespertino.CheckedChanged += new System.EventHandler(this.Rb_Vespertino_CheckedChanged);
             // 
             // Rb_Matutino
             // 
@@ -128,6 +119,7 @@
             this.Rb_Matutino.TabStop = true;
             this.Rb_Matutino.Text = "Matutino";
             this.Rb_Matutino.UseVisualStyleBackColor = true;
+            this.Rb_Matutino.CheckedChanged += new System.EventHandler(this.Rb_Matutino_CheckedChanged);
             // 
             // Cb_Grupo
             // 
@@ -211,11 +203,22 @@
             this.Gb_Filtros.TabIndex = 9;
             this.Gb_Filtros.TabStop = false;
             // 
+            // Btn_Buscar
+            // 
+            this.Btn_Buscar.Location = new System.Drawing.Point(500, 12);
+            this.Btn_Buscar.Name = "Btn_Buscar";
+            this.Btn_Buscar.Size = new System.Drawing.Size(120, 36);
+            this.Btn_Buscar.TabIndex = 10;
+            this.Btn_Buscar.Text = "Buscar";
+            this.Btn_Buscar.UseVisualStyleBackColor = true;
+            this.Btn_Buscar.Click += new System.EventHandler(this.Btn_Buscar_Click);
+            // 
             // Alumno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1386, 790);
+            this.Controls.Add(this.Btn_Buscar);
             this.Controls.Add(this.Gb_Filtros);
             this.Controls.Add(this.Cb_Filtros);
             this.Controls.Add(this.Turno);
@@ -238,7 +241,6 @@
         private System.Windows.Forms.DataGridView Dgv_Horario;
         private System.Windows.Forms.GroupBox Turno;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button Btn_Buscar;
         private System.Windows.Forms.ComboBox Cb_Semestre;
         private System.Windows.Forms.RadioButton Rb_Vespertino;
         private System.Windows.Forms.RadioButton Rb_Matutino;
@@ -250,5 +252,6 @@
         private System.Windows.Forms.ComboBox Ctxt_Profesor;
         private System.Windows.Forms.CheckBox Cb_Filtros;
         private System.Windows.Forms.GroupBox Gb_Filtros;
+        private System.Windows.Forms.Button Btn_Buscar;
     }
 }
